@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules
+.next
+.next-load
+next-env.d.ts
+*.tsbuildinfo
+
+# Local databases, seed links and test output
+.data
+test-results
+playwright-report
+
+# Secrets: every .env file except the template
+.env*
+!.env.example
+
+# Local editor and assistant settings
+.claude/
+.DS_Store

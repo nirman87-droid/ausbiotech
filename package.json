@@ -1,0 +1,46 @@
+{
+  "name": "ai-use-case-builder",
+  "version": "0.2.0",
+  "private": true,
+  "description": "ARM Hub AI Use Case Builder for AI Adopt workshops",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed": "tsx scripts/seed.ts",
+    "db:reset": "tsx scripts/migrate.ts --reset && tsx scripts/seed.ts",
+    "test:unit": "tsx --test tests/unit/*.test.ts",
+    "test:e2e": "playwright test",
+    "load": "tsx scripts/load-check.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.133.0",
+    "@electric-sql/pglite": "0.3.16",
+    "@react-pdf/renderer": "4.3.3",
+    "@supabase/ssr": "0.7.0",
+    "@supabase/supabase-js": "2.117.3",
+    "next": "15.5.26",
+    "papaparse": "5.7.0",
+    "pg": "8.23.1",
+    "qrcode": "1.5.4",
+    "react": "19.1.9",
+    "react-dom": "19.1.9",
+    "server-only": "0.0.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@tailwindcss/postcss": "4.1.18",
+    "@types/node": "22.20.5",
+    "@types/papaparse": "5.5.2",
+    "@types/pg": "8.23.1",
+    "@types/qrcode": "1.5.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.1.18",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Design tokens from spec section 9. White backgrounds only, no dark mode. */
+@theme {
+  --color-white: #ffffff;
+  --color-ink: #12262b;
+  --color-body: #24393f;
+  --color-muted: #4a5e64;
+  --color-teal: #006c81;
+  --color-teal-hover: #004e5e;
+  --color-tint: #e8f3f5;
+  --color-line: #d5dfe2;
+  --color-input: #9db0b5;
+  --color-success: #1b6b3a;
+  --color-warning: #8a3d0a;
+  --color-warning-line: #b4530f;
+  --color-danger: #a1260d;
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-control: 8px;
+  --radius-card: 12px;
+}
+
+html {
+  background: #ffffff;
+  color: var(--color-body);
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: var(--color-ink); }
+
+/* Visible focus on every interactive element. */
+:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 1.1rem;
+    border-radius: var(--radius-control);
+    font-weight: 600;
+    background: var(--color-teal);
+    color: #ffffff;
+    border: 1px solid var(--color-teal);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--color-teal-hover); border-color: var(--color-teal-hover); }
+  .btn:disabled, .btn[aria-disabled="true"] { background: #e3eaec; border-color: #e3eaec; color: var(--color-muted); cursor: not-allowed; }
+  .btn-secondary { background: #ffffff; color: var(--color-teal); border-color: var(--color-input); }
+  .btn-secondary:hover { background: var(--color-tint); color: var(--color-teal-hover); border-color: var(--color-teal); }
+  .btn-small { min-height: 36px; padding: 0 0.75rem; font-size: 0.875rem; }
+  .btn-danger { background: #ffffff; color: var(--color-danger); border-color: var(--color-danger); }
+  .btn-danger:hover { background: #fbeeea; color: var(--color-danger); }
+
+  .field-label { display: block; font-weight: 600; color: var(--color-ink); margin-bottom: 0.35rem; }
+  .field-hint { display: block; font-size: 0.875rem; color: var(--color-muted); margin-top: 0.25rem; }
+  .input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--color-input);
+    border-radius: var(--radius-control);
+    background: #ffffff;
+    color: var(--color-ink);
+    font: inherit;
+  }
+  .input:focus { border-color: var(--color-teal); }
+  .input[aria-invalid="true"] { border-color: var(--color-warning-line); }
+  textarea.input { min-height: 88px; resize: vertical; }
+
+  .card { background: #ffffff; border: 1px solid var(--color-line); border-radius: var(--radius-card); }
+  .mono-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
+  .link { color: var(--color-teal); text-decoration: underline; text-underline-offset: 2px; }
+  .link:hover { color: var(--color-teal-hover); }
+
+  .pill { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 999px; padding: 0.1rem 0.6rem; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--color-line); color: var(--color-body); background: #ffffff; }
+  .pill-teal { background: var(--color-tint); border-color: var(--color-teal); color: var(--color-teal-hover); }
+  .pill-success { border-color: var(--color-success); color: var(--color-success); }
+  .pill-warning { border-color: var(--color-warning-line); color: var(--color-warning); }
+
+  .notice { border: 1px solid var(--color-line); border-left: 4px solid var(--color-teal); border-radius: var(--radius-control); padding: 0.75rem 1rem; background: #ffffff; }
+  .notice-warning { border-color: var(--color-warning-line); border-left-color: var(--color-warning-line); color: var(--color-warning); }
+  .notice-success { border-left-color: var(--color-success); }
+
+  .table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .table th { text-align: left; font-weight: 600; color: var(--color-ink); border-bottom: 2px solid var(--color-line); padding: 0.5rem; white-space: nowrap; }
+  .table td { border-bottom: 1px solid var(--color-line); padding: 0.5rem; vertical-align: top; }
+
+  .sr-only-focusable:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+}
